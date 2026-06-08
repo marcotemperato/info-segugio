@@ -1,0 +1,113 @@
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+  background: radial-gradient(circle at top left, hsla(var(--primary), 0.16), transparent 24%),
+              radial-gradient(circle at bottom right, hsla(var(--secondary), 0.10), transparent 18%),
+              hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+body {
+  background-attachment: fixed;
+}
+
+#message-composer {
+  background: hsla(var(--card), 0.96);
+  border: 1px solid hsl(var(--border));
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+#message-composer:focus-within {
+  border-color: hsl(var(--primary));
+  transform: translateY(-1px);
+}
+
+#message-composer textarea,
+#message-composer input[type="text"],
+#message-composer input[type="search"] {
+  background: hsl(var(--input));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+}
+
+#message-composer button,
+#message-composer .button {
+  border-radius: 999px;
+}
+
+.message-content {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.message-content:hover {
+  transform: translateY(-1px);
+}
+
+.message-content .assistant_message {
+  background: hsla(var(--primary), 0.16);
+}
+
+.message-content .user_message {
+  background: hsla(var(--accent), 0.16);
+}
+
+.message-content .tool {
+  background: hsla(var(--secondary), 0.18);
+}
+
+.message-content code,
+.message-content pre {
+  background: hsl(var(--muted));
+  border-radius: 0.9rem;
+  padding: 0.9rem;
+  overflow-x: auto;
+}
+
+.message-content code {
+  font-family: var(--font-mono);
+}
+
+.message-content blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  padding-left: 1rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.sidebar,
+.sidebar-container,
+.header,
+.header-left,
+.header-right {
+  background: hsl(var(--sidebar-background)) !important;
+}
+
+.sidebar {
+  border-right: 1px solid hsl(var(--sidebar-border)) !important;
+}
+
+button,
+input,
+textarea,
+select {
+  border-radius: 0.95rem !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
