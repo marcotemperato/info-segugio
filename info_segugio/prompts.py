@@ -1,51 +1,86 @@
 ANALYSIS_PROMPT = """
-Analizza in profondità il seguente argomento.
-Massimo 250 parole.
+Domanda:
 
-ARGOMENTO:
 {query}
 
-Produci un testo chiaro e diretto con queste sezioni:
-- spiegazione dettagliata
+Risultati web:
+
+{web_results}
+
+Analizza i risultati.
+
+Produci:
+
+- sintesi
 - fattori principali
 - cause
 - conseguenze
 - dati rilevanti
-- parole chiave utili per approfondire
-- contesto economico e geopolitico
+- contesto
 
-Evita meta-analisi, suggerimenti operativi o ricerche future.
-Rispondi con contenuto utile e concreto.
+Massimo 300 parole.
+
+Non suggerire nuove ricerche.
 """
 
+
 NEXT_RESEARCH_PROMPT = """
-Domanda iniziale:
+Domanda originale:
+
 {original_query}
 
-Conoscenza raccolta:
+Informazioni raccolte:
+
 {running_summary}
 
-Identifica l'aspetto meno approfondito e formula una sola nuova domanda di ricerca specifica.
-Se non ci sono ulteriori approfondimenti utili rispondi ESCLUSIVAMENTE con:
+Identifica l'aspetto meno approfondito.
+
+Genera UNA SOLA query di ricerca.
+
+REGOLE OBBLIGATORIE:
+
+- massimo 15 parole
+- nessuna spiegazione
+- nessun elenco
+- nessun commento
+- nessuna introduzione
+- nessuna conclusione
+- restituisci esclusivamente la query
+
+Esempi validi:
+
+Impatto ETF Bitcoin sul prezzo nel 2026
+
+Politiche monetarie USA e crescita Bitcoin
+
+Adozione istituzionale Bitcoin negli ultimi 12 mesi
+
+Se non servono ulteriori approfondimenti rispondi esclusivamente con:
+
 STOP
 """
 
+
 FINAL_SUMMARY_PROMPT = """
 Domanda originale:
+
 {original_query}
 
-Tutte le informazioni raccolte:
+Informazioni raccolte:
+
 {running_summary}
 
-Genera una risposta finale professionale e completa.
-La risposta deve:
-- eliminare duplicazioni
-- unificare le informazioni
-- essere completa
-- essere leggibile
-- avere una conclusione finale
-- includere consigli pratici o indicazioni concrete quando possibile
+Genera una risposta finale professionale.
 
-Non parlare dei cicli di ricerca.
+La risposta deve:
+
+- essere completa
+- eliminare duplicazioni
+- integrare tutte le fonti
+- avere una conclusione finale
+- essere scritta come un articolo professionale
+
+Non parlare dei cicli.
 Non parlare dell'agente.
+Non parlare del processo di ricerca.
 """
